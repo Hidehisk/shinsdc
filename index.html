@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ========== GLOBAL STYLE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -23,12 +24,11 @@
             background-color: #f8fafb;
         }
 
-        /* Palet Warna Sesuai Logo @shin.sdc */
         :root {
-            --primary: #0D4B62;      /* RGB(13, 75, 98) - Biru kehijauan tua */
+            --primary: #0D4B62;
             --primary-dark: #073342;
             --primary-light: #e2edf2;
-            --secondary: #d4b89c;    /* Aksen hangat */
+            --secondary: #d4b89c;
             --text-dark: #1a2c34;
             --text-light: #4a636e;
             --white: #ffffff;
@@ -42,7 +42,11 @@
             padding: 0 24px;
         }
 
-        /* Header & Navigasi */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========== HEADER & NAVIGASI ========== */
         header {
             background-color: var(--white);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -127,7 +131,7 @@
             border-color: var(--primary-dark);
         }
 
-        /* Hero Section */
+        /* ========== HERO SECTION ========== */
         .hero {
             padding: 90px 0 70px;
             display: flex;
@@ -191,17 +195,15 @@
             background-color: var(--primary-light);
             border-radius: 40px;
             height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-           background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/WhatsApp%20Image%202026-04-22%20at%2014.23.04.jpeg');
             background-size: cover;
             background-position: center 30%;
             box-shadow: var(--shadow);
             border: 8px solid var(--white);
+            /* Foto dari GitHub */
+            background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop');
         }
 
-        /* Sections */
+        /* ========== SECTIONS ========== */
         section {
             padding: 80px 0;
         }
@@ -315,7 +317,7 @@
             margin-top: 4px;
         }
 
-        /* Tenaga Profesional (Umum) */
+        /* Tenaga Profesional Pendukung */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -332,7 +334,7 @@
             border: 1px solid #d9e4e9;
         }
 
-        /* Halaman Psikolog Berlisensi (Detail) */
+        /* Psikolog Profile */
         .psychologist-profile {
             display: flex;
             flex-wrap: wrap;
@@ -350,11 +352,12 @@
             height: 320px;
             background-color: var(--primary-light);
             border-radius: 30px;
-            <div class="psychologist-photo" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/WhatsApp%20Image%202026-04-22%20at%2014.23.04.jpeg');"></div>
             background-size: cover;
             background-position: center 30%;
             border: 6px solid white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            /* FOTO UTAMA PSIKOLOG */
+            background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/WhatsApp%20Image%202026-04-22%20at%2014.23.04.jpeg');
         }
 
         .psychologist-details {
@@ -446,7 +449,7 @@
             margin-bottom: 18px;
         }
 
-        /* Mindfulness Highlight */
+        /* Mindfulness Box */
         .mindfulness-box {
             background: linear-gradient(145deg, #f3f8fa 0%, #eaf1f5 100%);
             border-radius: 48px;
@@ -552,7 +555,7 @@
             font-size: 0.9rem;
         }
 
-        /* Responsif */
+        /* Responsive */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -583,10 +586,6 @@
                 height: 300px;
             }
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
     </style>
 </head>
 <body>
@@ -606,7 +605,7 @@
     </header>
 
     <main>
-        <!-- Hero / Home -->
+        <!-- Hero Section -->
         <section id="home">
             <div class="container hero">
                 <div class="hero-content">
@@ -624,7 +623,7 @@
                         <a href="#layanan" class="btn-outline">Lihat Layanan</a>
                     </div>
                 </div>
-                <div class="hero-image" aria-label="Ilustrasi ketenangan dan pertumbuhan diri"></div>
+                <div class="hero-image" aria-label="SHIN Self Development Center"></div>
             </div>
         </section>
 
@@ -722,19 +721,19 @@
             </div>
         </section>
 
-        <!-- Halaman Psikolog Berlisensi (Detail) - HANYA SATU PSIKOLOG -->
+        <!-- Psikolog Berlisensi -->
         <section id="psikolog" style="background-color: #f9fbfc;">
             <div class="container">
                 <h2 class="section-title">Psikolog Berlisensi</h2>
                 <p class="section-subtitle">Didukung oleh tenaga profesional berkompeten dan berlisensi resmi.</p>
 
-                <!-- Psikolog Sri Maryati Ank -->
                 <div class="psychologist-profile">
-                    <div class="psychologist-photo" style="background-image: url('https://images.unsplash.com/photo-1590650153855-d9e808231dce?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <!-- FOTO PSIKOLOG - SUDAH MENGGUNAKAN URL RAW GITHUB -->
+                    <div class="psychologist-photo"></div>
                     <div class="psychologist-details">
                         <div class="psychologist-name">Sri Maryati Ank, S.Psi., Psikolog</div>
                         <div class="psychologist-title">Psikolog</div>
-                        <p class="psychologist-bio">Sri Maryati Ank adalah psikolog  berlisensi dengan pendekatan yang hangat dan berbasis bukti. Ia memiliki pengalaman mendampingi klien dalam mengatasi kecemasan, stres, dan isu pengembangan diri. Sri percaya bahwa setiap individu memiliki kekuatan untuk bertumbuh melalui proses terapeutik yang aman dan suportif.</p>
+                        <p class="psychologist-bio">Sri Maryati Ank adalah psikolog berlisensi dengan pendekatan yang hangat dan berbasis bukti. Ia memiliki pengalaman mendampingi klien dalam mengatasi kecemasan, stres, dan isu pengembangan diri. Sri percaya bahwa setiap individu memiliki kekuatan untuk bertumbuh melalui proses terapeutik yang aman dan suportif.</p>
                         <ul class="credential-list">
                             <li><i class="fas fa-id-card"></i> No. SIAP HIMPSI: 20251470</li>
                             <li><i class="fas fa-certificate"></i> No. SILP: SILP-D08C01A3F541</li>
@@ -784,7 +783,7 @@
             </div>
         </section>
 
-        <!-- Mindfulness Section -->
+        <!-- Mindfulness -->
         <section id="mindfulness">
             <div class="container mindfulness-box">
                 <h3>Apa itu Mindfulness?</h3>
@@ -825,7 +824,7 @@
             </div>
         </section>
 
-        <!-- Kontak / CTA -->
+        <!-- Kontak -->
         <section id="kontak">
             <div class="container cta-box">
                 <h2>Hubungi Kami</h2>
