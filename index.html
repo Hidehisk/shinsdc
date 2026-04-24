@@ -960,6 +960,16 @@
                                 <span class="service-tag"><i class="far fa-clock"></i> ±4 menit</span>
                             </div>
                         </div>
+                        <!-- SDQ -->
+                        <div class="service-card" onclick="startTest('sdq')" style="cursor: pointer;">
+                            <div class="service-icon"><i class="fas fa-child"></i></div>
+                            <h3>SDQ</h3>
+                            <p>Kuesioner Kekuatan & Kesulitan untuk anak/remaja (4-17 tahun).</p>
+                            <div class="service-tags" style="margin-top:15px;">
+                                <span class="service-tag">25 Pertanyaan</span>
+                                <span class="service-tag"><i class="far fa-clock"></i> ±10 menit</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1259,6 +1269,97 @@
                     { max:26, icon:'<i class="fas fa-meh" style="color:#d4b89c;"></i>', title:'Stres Sedang', desc:'Anda mengalami tingkat stres sedang. Pertimbangkan teknik relaksasi seperti mindfulness.' },
                     { max:40, icon:'<i class="fas fa-frown" style="color:#c0392b;"></i>', title:'Stres Tinggi', desc:'Tingkat stres Anda cukup tinggi. Disarankan untuk berkonsultasi dengan psikolog.' }
                 ]
+            },
+            // ========== SDQ ==========
+            sdq: {
+                title: 'SDQ - Kuesioner Kekuatan dan Kesulitan (Anak/Remaja 4-17 tahun)',
+                instruction: 'Pilih jawaban yang paling menggambarkan anak/remaja dalam 6 bulan terakhir. Untuk remaja 11-17 tahun, jawablah sendiri.',
+                questions: [
+                    'Mencoba bersikap baik kepada orang lain, peduli dengan perasaan mereka',
+                    'Gelisah, tidak bisa diam untuk waktu lama',
+                    'Sering sakit kepala, sakit perut, atau merasa mual',
+                    'Biasanya berbagi dengan orang lain (makanan, mainan, pensil, dll.)',
+                    'Sering marah dan kehilangan kesabaran',
+                    'Lebih suka sendiri daripada bersama anak seusianya',
+                    'Biasanya melakukan apa yang diperintahkan orang lain',
+                    'Sering khawatir atau sering merasa cemas',
+                    'Berusaha menolong jika seseorang terluka, kecewa, atau merasa sakit',
+                    'Terus-menerus gelisah atau menggeliat',
+                    'Mempunyai satu teman baik atau lebih',
+                    'Sering bertengkar dengan anak lain atau mengganggu mereka',
+                    'Sering merasa tidak bahagia, sedih, atau menangis',
+                    'Pada umumnya disukai oleh anak-anak lain',
+                    'Mudah teralih perhatiannya, sulit berkonsentrasi',
+                    'Gugup/clingy dalam situasi baru, mudah kehilangan rasa percaya diri',
+                    'Bersikap baik kepada anak-anak yang lebih muda',
+                    'Sering berbohong atau menipu',
+                    'Diganggu atau dipermalukan oleh anak-anak lain',
+                    'Sering menawarkan diri untuk membantu orang lain (orangtua, guru, anak lain)',
+                    'Sebelum melakukan sesuatu, memikirkannya terlebih dahulu',
+                    'Mengambil barang yang bukan miliknya di rumah, sekolah, atau tempat lain',
+                    'Lebih mudah bergaul dengan orang dewasa daripada dengan anak-anak lain',
+                    'Mempunyai banyak ketakutan, mudah merasa takut',
+                    'Menyelesaikan tugas sampai tuntas, memiliki perhatian yang baik'
+                ],
+                likertLabels: ['Tidak Benar', 'Agak Benar', 'Benar'],
+                scoring: [0, 1, 2],
+                // Indeks item yang perlu dibalik nilainya (0-based)
+                reversedItems: [6, 10, 13, 20, 24],
+                subscales: {
+                    emotional: [2, 7, 12, 17, 22],
+                    conduct: [4, 9, 14, 19, 24], // item 24 adalah reversed
+                    hyperactivity: [1, 6, 11, 16, 21], // item 6 & 21 reversed
+                    peer: [0, 5, 10, 15, 20], // item 10 & 20 reversed
+                    prosocial: [3, 8, 13, 18, 23] // tidak ada reversed
+                },
+                calculateScore: function(answers) {
+                    // Reverse item terlebih dahulu
+                    const adjusted = answers.map((val, idx) => {
+                        return this.reversedItems.includes(idx) ? (2 - val) : val;
+                    });
+                    // Hitung subskala
+                    const scores = {};
+                    for (const [scale, indices] of Object.entries(this.subscales)) {
+                        scores[scale] = indices.reduce((sum, i) => sum + adjusted[i], 0);
+                    }
+                    // Total difficulties (tanpa prosocial)
+                    scores.totalDifficulties = scores.emotional + scores.conduct + scores.hyperactivity + scores.peer;
+                    return scores;
+                },
+                getResultText: function(scores) {
+                    // Klasifikasi total difficulties
+                    let diffClass = '';
+                    if (scores.totalDifficulties <= 13) diffClass = 'Normal';
+                    else if (scores.totalDifficulties <= 16) diffClass = 'Borderline (Batas)';
+                    else diffClass = 'Abnormal (Perlu Perhatian)';
+                    
+                    // Klasifikasi prosocial
+                    let prosocialClass = '';
+                    if (scores.prosocial >= 6) prosocialClass = 'Normal';
+                    else if (scores.prosocial === 5) prosocialClass = 'Borderline (Batas)';
+                    else prosocialClass = 'Abnormal (Rendah)';
+                    
+                    let html = '<div style="text-align:left; display:inline-block; width:100%; max-width:400px;">';
+                    html += `<p style="margin:10px 0;"><strong>Total Kesulitan:</strong> ${scores.totalDifficulties} (${diffClass})</p>`;
+                    html += '<hr style="margin:15px 0; border-color:#d9e4e9;">';
+                    html += `<p style="margin:8px 0;"><strong>Gejala Emosional:</strong> ${scores.emotional}</p>`;
+                    html += `<p style="margin:8px 0;"><strong>Masalah Perilaku:</strong> ${scores.conduct}</p>`;
+                    html += `<p style="margin:8px 0;"><strong>Hiperaktivitas/Inatensi:</strong> ${scores.hyperactivity}</p>`;
+                    html += `<p style="margin:8px 0;"><strong>Masalah Teman Sebaya:</strong> ${scores.peer}</p>`;
+                    html += `<p style="margin:8px 0;"><strong>Perilaku Prososial:</strong> ${scores.prosocial} (${prosocialClass})</p>`;
+                    html += '</div>';
+                    
+                    let rekomendasi = '';
+                    if (scores.totalDifficulties <= 13) {
+                        rekomendasi = 'Hasil dalam rentang normal. Tidak ada indikasi masalah yang signifikan.';
+                    } else if (scores.totalDifficulties <= 16) {
+                        rekomendasi = 'Hasil menunjukkan beberapa kesulitan di ambang batas. Disarankan untuk memantau atau berkonsultasi dengan psikolog jika berlanjut.';
+                    } else {
+                        rekomendasi = 'Hasil menunjukkan tingkat kesulitan yang tinggi. Sangat disarankan untuk berkonsultasi dengan psikolog anak/remaja untuk evaluasi lebih lanjut.';
+                    }
+                    html += `<p style="margin-top:15px; font-size:0.95rem;">${rekomendasi}</p>`;
+                    return html;
+                }
             }
         };
 
@@ -1367,6 +1468,11 @@
                     const detailsHtml = currentTest.getResultText(scores);
                     displayCustomResult(detailsHtml, scores);
                     return;
+                } else if (currentTest.title.includes('SDQ')) {
+                    const scores = currentTest.calculateScore(answers);
+                    const detailsHtml = currentTest.getResultText(scores);
+                    displayCustomResult(detailsHtml, scores);
+                    return;
                 } else {
                     const totalScore = currentTest.calculateScore(answers);
                     displayResult(totalScore);
@@ -1394,9 +1500,9 @@
 
         function displayCustomResult(detailsHtml, scores) {
             document.getElementById('result-icon').innerHTML = '<i class="fas fa-clipboard-check" style="color:#0D4B62;"></i>';
-            document.getElementById('result-title').textContent = 'Hasil Skrining DASS-21';
+            document.getElementById('result-title').textContent = 'Hasil Skrining ' + currentTest.title.split(' - ')[0];
             document.getElementById('result-score-display').innerHTML = '';
-            document.getElementById('result-details').innerHTML = detailsHtml + '<p style="margin-top:12px; font-size:0.95rem; color: var(--text-light);">Interpretasi berdasarkan skala DASS-21. Konsultasikan dengan psikolog untuk pemahaman lebih lanjut.</p>';
+            document.getElementById('result-details').innerHTML = detailsHtml;
         }
 
         function resetTest() {
