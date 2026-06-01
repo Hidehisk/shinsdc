@@ -826,16 +826,33 @@
                 <h2 class="section-title">Psikolog Berlisensi</h2>
                 <p class="section-subtitle">Didukung oleh tenaga profesional berkompeten dan berlisensi resmi.</p>
 
+                <!-- Psikolog 1: Sri Maryati Ank -->
                 <div class="psychologist-profile">
-                    <div class="psychologist-photo"></div>
+                    <div class="psychologist-photo" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/WhatsApp%20Image%202026-04-22%20at%2014.23.04.jpeg');"></div>
                     <div class="psychologist-details">
                         <div class="psychologist-name">Sri Maryati Ank, S.Psi., Psikolog</div>
-                        <div class="psychologist-title">Psikolog Umum</div>
-                        <p class="psychologist-bio">.</p>
+                        <div class="psychologist-title">Psikolog</div>
+                        <p class="psychologist-bio">Sri Maryati Ank adalah psikolog berlisensi dengan pendekatan yang hangat dan berbasis bukti. Ia memiliki pengalaman mendampingi klien dalam mengatasi kecemasan, stres, dan isu pengembangan diri. Sri percaya bahwa setiap individu memiliki kekuatan untuk bertumbuh melalui proses terapeutik yang aman dan suportif.</p>
                         <ul class="credential-list">
-                            <li><i class="fas fa-id-card"></i> No. SIAP HIMPSI: 20251470</li>
+                            <li><i class="fas fa-id-card">
                             <li><i class="fas fa-certificate"></i> No. SILP: SILP-D08C01A3F541</li>
                             <li><i class="fas fa-user-check"></i> Praktik: Senin - Jumat (sesuai janji)</li>
+                        </ul>
+                        <a href="#kontak" class="btn-outline">Jadwalkan Konsultasi</a>
+                    </div>
+                </div>
+
+                <!-- Psikolog 2: Syafina Rani Syahfitri -->
+                <div class="psychologist-profile">
+                    <div class="psychologist-photo" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/IMG_6807.JPEG');"></div>
+                    <div class="psychologist-details">
+                        <div class="psychologist-name">Syafina Rani Syahfitri, Psikolog</div>
+                        <div class="psychologist-title">Psikolog</div>
+                        <p class="psychologist-bio">Syafina Rani Syahfitri adalah psikolog berlisensi yang berdedikasi untuk memberikan layanan psikologis profesional dengan pendekatan yang hangat dan personal. Ia memiliki komitmen tinggi dalam mendampingi individu untuk mencapai kesejahteraan mental yang optimal.</p>
+                        <ul class="credential-list">
+                            <li><i class="fas fa-id-card"></i> No. STR: STR20251471-2026-0136</li>
+                            <li><i class="fas fa-certificate"></i> No. SILP: SILP-AE33160F1590</li>
+                            <li><i class="fas fa-user-check"></i> Praktik: Sesuai janji</li>
                         </ul>
                         <a href="#kontak" class="btn-outline">Jadwalkan Konsultasi</a>
                     </div>
@@ -1303,37 +1320,31 @@
                 ],
                 likertLabels: ['Tidak Benar', 'Agak Benar', 'Benar'],
                 scoring: [0, 1, 2],
-                // Indeks item yang perlu dibalik nilainya (0-based)
                 reversedItems: [6, 10, 13, 20, 24],
                 subscales: {
                     emotional: [2, 7, 12, 17, 22],
-                    conduct: [4, 9, 14, 19, 24], // item 24 adalah reversed
-                    hyperactivity: [1, 6, 11, 16, 21], // item 6 & 21 reversed
-                    peer: [0, 5, 10, 15, 20], // item 10 & 20 reversed
-                    prosocial: [3, 8, 13, 18, 23] // tidak ada reversed
+                    conduct: [4, 9, 14, 19, 24],
+                    hyperactivity: [1, 6, 11, 16, 21],
+                    peer: [0, 5, 10, 15, 20],
+                    prosocial: [3, 8, 13, 18, 23]
                 },
                 calculateScore: function(answers) {
-                    // Reverse item terlebih dahulu
                     const adjusted = answers.map((val, idx) => {
                         return this.reversedItems.includes(idx) ? (2 - val) : val;
                     });
-                    // Hitung subskala
                     const scores = {};
                     for (const [scale, indices] of Object.entries(this.subscales)) {
                         scores[scale] = indices.reduce((sum, i) => sum + adjusted[i], 0);
                     }
-                    // Total difficulties (tanpa prosocial)
                     scores.totalDifficulties = scores.emotional + scores.conduct + scores.hyperactivity + scores.peer;
                     return scores;
                 },
                 getResultText: function(scores) {
-                    // Klasifikasi total difficulties
                     let diffClass = '';
                     if (scores.totalDifficulties <= 13) diffClass = 'Normal';
                     else if (scores.totalDifficulties <= 16) diffClass = 'Borderline (Batas)';
                     else diffClass = 'Abnormal (Perlu Perhatian)';
                     
-                    // Klasifikasi prosocial
                     let prosocialClass = '';
                     if (scores.prosocial >= 6) prosocialClass = 'Normal';
                     else if (scores.prosocial === 5) prosocialClass = 'Borderline (Batas)';
@@ -1393,7 +1404,6 @@
             document.getElementById('submit-btn').style.display = q === quiz.questions.length - 1 ? 'inline-block' : 'none';
 
             if (quiz.options) {
-                // Binary (Ya/Tidak)
                 document.getElementById('options-container').style.display = 'flex';
                 document.getElementById('likert-container').style.display = 'none';
                 document.getElementById('options-container').innerHTML = '';
@@ -1412,7 +1422,6 @@
                     document.getElementById('options-container').appendChild(btn);
                 });
             } else {
-                // Likert
                 document.getElementById('options-container').style.display = 'none';
                 document.getElementById('likert-container').style.display = 'flex';
                 document.getElementById('likert-container').innerHTML = '';
