@@ -598,6 +598,20 @@
     </style>
 </head>
 <body>
+    <!-- Pop-up CTA Cek Kesehatan -->
+    <div id="health-popup" class="modal-overlay" style="display: none;">
+        <div class="modal" style="text-align: center;">
+            <button class="close-btn" onclick="closeHealthPopup()">&times;</button>
+            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3 style="color: var(--primary-dark); margin-bottom: 10px;">Cek Kesehatan Mental Gratis</h3>
+            <p style="color: var(--text-light); margin-bottom: 25px;">Kenali kondisi emosional Anda sekarang dengan alat skrining kami. Rahasia, cepat, dan gratis.</p>
+            <a href="#skrining" class="btn-primary pulse-animation" onclick="closeHealthPopup()" style="margin-right: 10px;">Cek Sekarang</a>
+            <button onclick="closeHealthPopup()" class="btn-outline" style="margin-top: 10px;">Nanti Saja</button>
+        </div>
+    </div>
+
     <header id="main-header">
         <div class="container navbar">
             <div class="logo">SHIN <span>SDC</span></div>
@@ -839,7 +853,6 @@
                 </div>
 
                 <div id="result-area" style="display:none;">
-                    <!-- Area konfirmasi setelah kirim data, BUKAN hasil -->
                     <div id="confirmation-area">
                         <div class="result-card">
                             <div style="font-size: 4rem; margin-bottom: 20px; color: var(--primary);">
@@ -923,6 +936,22 @@
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Pop-up Cek Kesehatan
+        function showHealthPopup() {
+            document.getElementById('health-popup').style.display = 'flex';
+        }
+
+        function closeHealthPopup() {
+            document.getElementById('health-popup').style.display = 'none';
+            sessionStorage.setItem('popupShown', 'true');
+        }
+
+        window.addEventListener('load', function() {
+            if (!sessionStorage.getItem('popupShown')) {
+                setTimeout(showHealthPopup, 1000);
+            }
         });
 
         // Database kuis (sama seperti sebelumnya)
