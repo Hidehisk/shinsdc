@@ -516,21 +516,21 @@
     <!-- Pop-up CTA Cek Kesehatan -->
     <div id="health-popup" class="modal-overlay" style="display: none;">
         <div class="modal" style="text-align: center;">
-            <button class="close-btn" onclick="closeHealthPopup()">&times;</button>
+            <button type="button" class="close-btn" onclick="closeHealthPopup()">&times;</button>
             <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">
                 <i class="fas fa-heartbeat"></i>
             </div>
             <h3 style="color: var(--primary-dark); margin-bottom: 10px;">Cek Kesehatan Mental Gratis</h3>
             <p style="color: var(--text-light); margin-bottom: 25px;">Kenali kondisi emosional Anda sekarang dengan alat skrining kami. Rahasia, cepat, dan gratis.</p>
             <a href="#skrining" class="btn-primary pulse-animation" onclick="closeHealthPopup()" style="margin-right: 10px;">Cek Sekarang</a>
-            <button onclick="closeHealthPopup()" class="btn-outline" style="margin-top: 10px;">Nanti Saja</button>
+            <button type="button" onclick="closeHealthPopup()" class="btn-outline" style="margin-top: 10px;">Nanti Saja</button>
         </div>
     </div>
 
     <!-- Modal Persetujuan Layanan (Informed Consent) dengan Checkbox -->
     <div id="consent-modal" class="modal-overlay" style="display: none;">
         <div class="modal" style="text-align: left;">
-            <button class="close-btn" onclick="closeConsent()">&times;</button>
+            <button type="button" class="close-btn" onclick="closeConsent()">&times;</button>
             <div style="text-align: center; margin-bottom: 15px;">
                 <img src="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png" alt="Logo SHIN" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
                 <h3 style="color: var(--primary-dark); margin-top:10px;">PERSETUJUAN LAYANAN<br>(Informed Consent)</h3>
@@ -554,8 +554,8 @@
             <p class="error" id="consent-error" style="display:none; margin-bottom:10px;">
                 Anda harus mencentang kotak persetujuan terlebih dahulu.
             </p>
-            <button class="btn-primary" onclick="validateAndStart()" style="width:100%;">Mulai Skrining</button>
-            <button class="btn-outline" onclick="closeConsent()" style="width:100%; margin-top:10px;">Batal</button>
+            <button type="button" class="btn-primary" onclick="validateAndStart()" style="width:100%;">Mulai Skrining</button>
+            <button type="button" class="btn-outline" onclick="closeConsent()" style="width:100%; margin-top:10px;">Batal</button>
         </div>
     </div>
 
@@ -826,9 +826,9 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         <div id="options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;"></div>
                         <div id="likert-container" style="display: none; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; gap: 10px;"></div>
                         <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center;">
-                            <button onclick="prevQuestion()" class="btn-outline" id="prev-btn" style="display:none;">Sebelumnya</button>
-                            <button onclick="nextQuestion()" class="btn-primary" id="next-btn">Selanjutnya</button>
-                            <button onclick="submitTest()" class="btn-primary pulse-animation" id="submit-btn" style="display:none;">Lihat Hasil</button>
+                            <button type="button" onclick="prevQuestion()" class="btn-outline" id="prev-btn" style="display:none;">Sebelumnya</button>
+                            <button type="button" onclick="nextQuestion()" class="btn-primary" id="next-btn">Selanjutnya</button>
+                            <button type="button" onclick="submitTest()" class="btn-primary pulse-animation" id="submit-btn" style="display:none;">Lihat Hasil</button>
                         </div>
                     </div>
                 </div>
@@ -844,7 +844,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                                 Terima kasih telah mengisi skrining kesehatan mental. Tim kami akan menghubungi Anda melalui WhatsApp atau email yang telah diberikan untuk membahas hasil dan rekomendasi lebih lanjut.
                             </p>
                             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                                <button onclick="resetTest()" class="btn-outline">Kembali ke Pilihan Tes</button>
+                                <button type="button" onclick="resetTest()" class="btn-outline">Kembali ke Pilihan Tes</button>
                                 <a href="#kontak" class="btn-primary">Hubungi Kami</a>
                             </div>
                         </div>
@@ -1226,7 +1226,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             overlay.id = 'data-modal';
             overlay.innerHTML = `
                 <div class="modal">
-                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                    <button type="button" class="close-btn" onclick="closeModal()">&times;</button>
                     <h3>Dapatkan Hasil Skrining Anda</h3>
                     <p style="color: var(--text-light); margin-bottom: 20px; font-size: 0.95rem;">Silakan isi data berikut. Kami akan mengirimkan hasilnya ke WhatsApp/Email Anda.</p>
                     <input type="text" id="form-name" placeholder="Nama Lengkap *" required>
@@ -1238,8 +1238,8 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         <input type="checkbox" id="form-consent" required style="width: auto;">
                         <label for="form-consent" style="font-size: 0.9rem; color: var(--text-light);">Saya setuju dengan <a href="#" style="color: var(--primary);">Kebijakan Privasi</a> *</label>
                     </div>
-                    <p class="error" id="consent-error">Anda harus menyetujui kebijakan privasi</p>
-                    <button class="btn-primary" onclick="submitDataForm()" style="margin-top: 10px;">Kirim & Lihat Hasil</button>
+                    <p class="error" id="data-consent-error">Anda harus menyetujui kebijakan privasi</p>
+                    <button type="button" class="btn-primary" onclick="submitDataForm()" style="margin-top: 10px;">Kirim & Lihat Hasil</button>
                     <p class="privacy-text"><i class="fas fa-lock" style="color: var(--primary);"></i> Data Anda aman dan hanya digunakan untuk keperluan konsultasi.</p>
                 </div>
             `;
@@ -1272,10 +1272,10 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 document.getElementById('wa-error').style.display = 'none';
             }
             if (!consent) {
-                document.getElementById('consent-error').style.display = 'block';
+                document.getElementById('data-consent-error').style.display = 'block';
                 valid = false;
             } else {
-                document.getElementById('consent-error').style.display = 'none';
+                document.getElementById('data-consent-error').style.display = 'none';
             }
             if (!valid) return;
 
@@ -1285,21 +1285,23 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 whatsapp: whatsapp,
                 testName: currentTest.title,
                 testResult: getResultSummary(),
-                answers: answerLabels.join(', ') // <-- TAMBAHKAN INI
+                answers: answerLabels.join(', ')
             };
 
-            const queryString = new URLSearchParams(payload).toString();
-            const url = 'https://script.google.com/macros/s/AKfycbxgEDV0IAsaCgJ2mT6cHJ2nNmT_ryoOFMyAgACQBbYu1iBayCCW0fjFVTcw5GX0FNpc/exec?' + queryString;
+            // URL Web App baru (POST)
+            const url = 'https://script.google.com/macros/s/AKfycbwU8iEnSO62a2oY9XiBzNSVgshDyrFNJvlofXn6I0KDkfd0whdnDIpb6ea6O-fORtdw/exec';
 
-            fetch(url, { method: 'GET' })
-            .then(response => response.text())
-            .then(text => {
-                if (text.trim() === 'success') {
-                    closeModal();
-                    showConfirmation();
-                } else {
-                    alert('Gagal mengirim data. Silakan coba lagi.');
-                }
+            // Gunakan mode no-cors untuk menghindari error CORS
+            fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                // Karena no-cors tidak bisa baca response, anggap sukses
+                closeModal();
+                showConfirmation();
             })
             .catch(error => {
                 console.error(error);
