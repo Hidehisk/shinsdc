@@ -576,6 +576,7 @@
     </header>
 
     <main>
+        <!-- Hero Section dengan Slider -->
         <section id="home">
             <div class="container hero">
                 <div class="hero-content">
@@ -637,6 +638,7 @@
             </div>
         </section>
 
+        <!-- Layanan Kami -->
         <section id="layanan" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Layanan Kami</h2>
@@ -650,6 +652,7 @@
             </div>
         </section>
 
+        <!-- Setting Layanan -->
         <section>
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Setting Layanan</h2>
@@ -663,6 +666,7 @@
             </div>
         </section>
 
+        <!-- Psikolog Berlisensi -->
         <section id="psikolog" style="background-color: #f9fbfc;">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Psikolog Berlisensi</h2>
@@ -723,6 +727,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Pendekatan & Nilai -->
         <section>
             <div class="container">
                 <div style="display:flex; flex-wrap:wrap; gap:40px;">
@@ -748,6 +753,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Mindfulness -->
         <section id="mindfulness">
             <div class="container mindfulness-box animate fade-in-scale">
                 <h3>Apa itu Mindfulness?</h3>
@@ -761,6 +767,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Cek Kesehatan Mental -->
         <section id="skrining" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Cek Kesehatan Mental</h2>
@@ -846,6 +853,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Siapa yang Cocok + Jam Praktik -->
         <section>
             <div class="container">
                 <div style="display:flex; gap:40px; flex-wrap:wrap;">
@@ -872,6 +880,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Kontak -->
         <section id="kontak">
             <div class="container cta-box animate fade-in-scale">
                 <h2>Hubungi Kami</h2>
@@ -1133,11 +1142,13 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
         let currentTest = null;
         let currentQuestion = 0;
         let answers = [];
+        let answerLabels = []; // <-- TAMBAHKAN DI SINI
 
         function startTest(testId) {
             currentTest = quizzes[testId];
             currentQuestion = 0;
             answers = new Array(currentTest.questions.length).fill(undefined);
+            answerLabels = new Array(currentTest.questions.length).fill(''); // Reset label
             document.getElementById('test-selection').style.display = 'none';
             document.getElementById('quiz-area').style.display = 'block';
             document.getElementById('result-area').style.display = 'none';
@@ -1169,6 +1180,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         document.querySelectorAll('#options-container .quiz-option-btn').forEach(b => b.classList.remove('selected'));
                         btn.classList.add('selected');
                         answers[q] = quiz.scoring[idx];
+                        answerLabels[q] = opt; // Simpan label jawaban
                     };
                     document.getElementById('options-container').appendChild(btn);
                 });
@@ -1187,6 +1199,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         document.querySelectorAll('#likert-container .quiz-likert-btn').forEach(b => b.classList.remove('selected'));
                         btn.classList.add('selected');
                         answers[q] = scores[idx];
+                        answerLabels[q] = label; // Simpan label jawaban
                     };
                     document.getElementById('likert-container').appendChild(btn);
                 });
@@ -1271,7 +1284,8 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 email: email,
                 whatsapp: whatsapp,
                 testName: currentTest.title,
-                testResult: getResultSummary()
+                testResult: getResultSummary(),
+                answers: answerLabels.join(', ') // <-- TAMBAHKAN INI
             };
 
             const queryString = new URLSearchParams(payload).toString();
@@ -1338,6 +1352,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             currentTest = null;
             currentQuestion = 0;
             answers = [];
+            answerLabels = [];
             document.getElementById('test-selection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     </script>
