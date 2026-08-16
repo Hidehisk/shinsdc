@@ -192,16 +192,69 @@
             color: white; border-color: var(--primary);
             transform: translateY(-2px);
         }
-        .hero-image {
+
+        /* Hero slider */
+        .hero-slider {
             flex: 1 1 400px;
-            background-color: var(--primary-light);
-            border-radius: 40px; height: 420px;
-            background-size: cover; background-position: center 30%;
+            border-radius: 40px;
+            height: 420px;
+            position: relative;
+            overflow: hidden;
             box-shadow: var(--shadow);
             border: 8px solid var(--white);
-            background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/Untitled%20%281080%20x%201350%20mm%29%20%283110%20x%201380%20px%29%20%2818%29.png');
-            animation: float 6s ease-in-out infinite;
+            background-color: var(--primary-light);
         }
+        .hero-slider .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center 30%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .hero-slider .slide.active { opacity: 1; }
+        .hero-slider .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: background 0.3s;
+        }
+        .hero-slider .slide-btn:hover { background: rgba(255,255,255,0.95); }
+        .hero-slider .slide-btn.prev { left: 15px; }
+        .hero-slider .slide-btn.next { right: 15px; }
+        .hero-slider .slide-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+        .hero-slider .slide-nav button {
+            background: rgba(255,255,255,0.7);
+            border: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .hero-slider .slide-nav button.active { background: var(--primary); }
 
         section { padding: 80px 0; position: relative; }
         .section-title {
@@ -450,7 +503,7 @@
             .navbar { flex-direction: column; gap: 16px; }
             .nav-links { gap: 18px; flex-wrap: wrap; justify-content: center; }
             .hero-content h1 { font-size: 2.5rem; }
-            .hero-image { height: 300px; }
+            .hero-slider { height: 300px; }
             .mindfulness-list { columns: 1; }
             .section-title { font-size: 2rem; }
             .psychologist-profile { padding: 30px; }
@@ -523,6 +576,7 @@
     </header>
 
     <main>
+        <!-- Hero Section dengan Slider -->
         <section id="home">
             <div class="container hero">
                 <div class="hero-content">
@@ -540,10 +594,25 @@
                         <a href="#layanan" class="btn-outline">Lihat Layanan</a>
                     </div>
                 </div>
-                <div class="hero-image" aria-label="SHIN Self Development Center"></div>
+                <!-- Slider -->
+                <div class="hero-slider" aria-label="Galeri SHIN Self Development Center">
+                    <div class="slide active" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/Untitled%20%281080%20x%201350%20mm%29%20%283110%20x%201380%20px%29%20%2819%29.png');"></div>
+                    <div class="slide" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/P1242451.jpg');"></div>
+                    <div class="slide" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/P1232367.jpg');"></div>
+                    <div class="slide" style="background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/P1232354-3.jpg');"></div>
+                    <button class="slide-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide(1)">&#10095;</button>
+                    <div class="slide-nav">
+                        <button class="active" onclick="goToSlide(0)"></button>
+                        <button onclick="goToSlide(1)"></button>
+                        <button onclick="goToSlide(2)"></button>
+                        <button onclick="goToSlide(3)"></button>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- Tentang Kami -->
         <section id="tentang">
             <div class="container">
                 <div class="about-wrapper">
@@ -569,6 +638,7 @@
             </div>
         </section>
 
+        <!-- Layanan Kami -->
         <section id="layanan" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Layanan Kami</h2>
@@ -582,6 +652,7 @@
             </div>
         </section>
 
+        <!-- Setting Layanan -->
         <section>
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Setting Layanan</h2>
@@ -595,6 +666,7 @@
             </div>
         </section>
 
+        <!-- Psikolog Berlisensi -->
         <section id="psikolog" style="background-color: #f9fbfc;">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Psikolog Berlisensi</h2>
@@ -655,6 +727,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Pendekatan & Nilai -->
         <section>
             <div class="container">
                 <div style="display:flex; flex-wrap:wrap; gap:40px;">
@@ -680,6 +753,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Mindfulness -->
         <section id="mindfulness">
             <div class="container mindfulness-box animate fade-in-scale">
                 <h3>Apa itu Mindfulness?</h3>
@@ -693,6 +767,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Cek Kesehatan Mental -->
         <section id="skrining" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Cek Kesehatan Mental</h2>
@@ -778,6 +853,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Siapa yang Cocok + Jam Praktik -->
         <section>
             <div class="container">
                 <div style="display:flex; gap:40px; flex-wrap:wrap;">
@@ -804,6 +880,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
+        <!-- Kontak -->
         <section id="kontak">
             <div class="container cta-box animate fade-in-scale">
                 <h2>Hubungi Kami</h2>
@@ -890,6 +967,35 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 startTest(testId);
             }
         }
+
+        // Slider hero
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        const navButtons = document.querySelectorAll('.hero-slider .slide-nav button');
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            navButtons.forEach((btn, index) => {
+                btn.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlides();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlides();
+        }
+
+        // Auto-play slider (opsional, ganti setiap 5 detik)
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
 
         // Database kuis
         const quizzes = {
