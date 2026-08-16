@@ -576,7 +576,6 @@
     </header>
 
     <main>
-        <!-- Hero Section dengan Slider -->
         <section id="home">
             <div class="container hero">
                 <div class="hero-content">
@@ -638,7 +637,6 @@
             </div>
         </section>
 
-        <!-- Layanan Kami -->
         <section id="layanan" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Layanan Kami</h2>
@@ -652,7 +650,6 @@
             </div>
         </section>
 
-        <!-- Setting Layanan -->
         <section>
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Setting Layanan</h2>
@@ -666,7 +663,6 @@
             </div>
         </section>
 
-        <!-- Psikolog Berlisensi -->
         <section id="psikolog" style="background-color: #f9fbfc;">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Psikolog Berlisensi</h2>
@@ -727,7 +723,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
-        <!-- Pendekatan & Nilai -->
         <section>
             <div class="container">
                 <div style="display:flex; flex-wrap:wrap; gap:40px;">
@@ -753,7 +748,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
-        <!-- Mindfulness -->
         <section id="mindfulness">
             <div class="container mindfulness-box animate fade-in-scale">
                 <h3>Apa itu Mindfulness?</h3>
@@ -767,7 +761,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
-        <!-- Cek Kesehatan Mental -->
         <section id="skrining" style="background-color: var(--primary-light);">
             <div class="container">
                 <h2 class="section-title animate fade-in-up">Cek Kesehatan Mental</h2>
@@ -853,7 +846,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
-        <!-- Siapa yang Cocok + Jam Praktik -->
         <section>
             <div class="container">
                 <div style="display:flex; gap:40px; flex-wrap:wrap;">
@@ -880,7 +872,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             </div>
         </section>
 
-        <!-- Kontak -->
         <section id="kontak">
             <div class="container cta-box animate fade-in-scale">
                 <h2>Hubungi Kami</h2>
@@ -921,18 +912,15 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Pop-up Cek Kesehatan
+        // Pop-up Cek Kesehatan (selalu muncul)
         function showHealthPopup() {
             document.getElementById('health-popup').style.display = 'flex';
         }
         function closeHealthPopup() {
             document.getElementById('health-popup').style.display = 'none';
-            sessionStorage.setItem('popupShown', 'true');
         }
         window.addEventListener('load', function() {
-            if (!sessionStorage.getItem('popupShown')) {
-                setTimeout(showHealthPopup, 1000);
-            }
+            setTimeout(showHealthPopup, 1000);
         });
 
         // Consent modal handling
