@@ -7,19 +7,22 @@
     <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
-    <title>SHIN Self Development Center | Support · Healing · Insight · Nurture</title>
+    <title>SHIN Self Development Center | Psikolog Jogja & Kalasan</title>
+    <meta name="description" content="SHIN Self Development Center (SSDC) menyediakan layanan psikologi, konseling, asesmen, mindfulness, dan cek kesehatan mental gratis. Melayani area Yogyakarta, Sleman, Kalasan. Didukung psikolog berlisensi.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
             color: #1e2b32;
             background-color: #f8fafb;
             overflow-x: hidden;
+            max-width: 100%;
         }
         :root {
             --primary: #0D4B62;
@@ -33,8 +36,7 @@
             --shadow-hover: 0 25px 35px rgba(13, 75, 98, 0.08);
             --border-radius: 24px;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        html { scroll-behavior: smooth; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -81,10 +83,11 @@
             padding: 16px 0;
             border-bottom: 1px solid #e6edf0;
             transition: box-shadow 0.3s ease;
+            width: 100%;
         }
         header.scrolled { box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05); }
 
-        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .logo {
             font-size: 1.9rem; font-weight: 700;
             color: var(--primary); letter-spacing: -0.5px;
@@ -93,7 +96,7 @@
         .logo:hover { transform: scale(1.03); }
         .logo span { font-weight: 400; color: #5a7a89; }
 
-        .nav-links { display: flex; gap: 36px; align-items: center; }
+        .nav-links { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
         .nav-links a {
             text-decoration: none; color: var(--text-dark);
             font-weight: 500; transition: color 0.2s, transform 0.2s;
@@ -153,6 +156,7 @@
             display: flex; align-items: center;
             gap: 50px; flex-wrap: wrap;
             position: relative;
+            width: 100%;
         }
         .hero::before {
             content: ''; position: absolute;
@@ -161,8 +165,9 @@
             top: -100px; right: -100px;
             border-radius: 50%; z-index: 0;
             animation: float 8s ease-in-out infinite;
+            pointer-events: none;
         }
-        .hero-content { flex: 1 1 450px; position: relative; z-index: 1; }
+        .hero-content { flex: 1 1 450px; position: relative; z-index: 1; min-width: 0; }
         .hero-badge {
             color: var(--primary); font-weight: 600;
             letter-spacing: 2px; margin-bottom: 16px;
@@ -203,6 +208,7 @@
             box-shadow: var(--shadow);
             border: 8px solid var(--white);
             background-color: var(--primary-light);
+            min-width: 0;
         }
         .hero-slider .slide {
             position: absolute;
@@ -256,7 +262,7 @@
         }
         .hero-slider .slide-nav button.active { background: var(--primary); }
 
-        section { padding: 80px 0; position: relative; }
+        section { padding: 80px 0; position: relative; width: 100%; }
         .section-title {
             font-size: 2.6rem; font-weight: 700;
             color: var(--text-dark); margin-bottom: 24px;
@@ -300,7 +306,7 @@
         .service-card li:last-child { border-bottom: none; }
 
         .about-wrapper { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
-        .about-text { flex: 2 1 500px; }
+        .about-text { flex: 2 1 500px; min-width: 0; }
         .vision-mission {
             flex: 1 1 300px;
             background-color: var(--primary-light);
@@ -341,7 +347,7 @@
             transition: transform 0.3s ease;
         }
         .psychologist-photo:hover { transform: scale(1.02); }
-        .psychologist-details { flex: 1; }
+        .psychologist-details { flex: 1; min-width: 0; }
         .psychologist-name { font-size: 2.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
         .psychologist-title {
             font-size: 1.2rem; color: var(--primary);
@@ -403,6 +409,7 @@
             top: -50px; right: -50px;
             border-radius: 50%;
             animation: float 10s ease-in-out infinite;
+            pointer-events: none;
         }
         .cta-box h2 { color: white; margin-bottom: 20px; font-size: 2.5rem; position: relative; z-index: 1; }
         .cta-box .btn-primary { background: white; color: var(--primary) !important; position: relative; z-index: 1; }
@@ -410,6 +417,16 @@
         .contact-item { transition: transform 0.3s ease; }
         .contact-item:hover { transform: translateY(-3px); }
         .contact-item i { margin-right: 10px; color: var(--secondary); }
+        .address-text {
+            background: rgba(255,255,255,0.2);
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: inline-block;
+            margin: 10px auto 25px;
+            position: relative;
+            z-index: 1;
+        }
+        .address-text i { color: var(--secondary); margin-right: 10px; }
         .jam-praktik {
             background: rgba(255,255,255,0.15);
             border-radius: 40px; padding: 16px 24px;
@@ -493,7 +510,7 @@
         }
         .modal .privacy-text { font-size: 0.8rem; color: var(--text-light); margin: 10px 0; text-align: center; }
 
-        footer { background-color: var(--white); padding: 30px 0; border-top: 1px solid #d0dee4; color: var(--text-light); }
+        footer { background-color: var(--white); padding: 30px 0; border-top: 1px solid #d0dee4; color: var(--text-light); width: 100%; }
         .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         .footer-links a { color: var(--text-light); text-decoration: none; margin-left: 24px; transition: color 0.3s ease; }
         .footer-links a:hover { color: var(--primary); }
@@ -509,8 +526,41 @@
             .psychologist-profile { padding: 30px; }
             .psychologist-photo { flex: 0 0 100%; height: 300px; }
             .quiz-likert-btn { min-width: 55px; padding: 12px 8px; font-size: 0.8rem; }
+            .hero::before { width: 200px; height: 200px; right: -50px; }
+            .cta-box::before { width: 200px; height: 200px; right: -50px; }
         }
     </style>
+    <!-- Schema Markup LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "SHIN Self Development Center",
+      "description": "Layanan psikologi profesional di Yogyakarta, Sleman, Kalasan, dan sekitarnya. Konseling, asesmen, mindfulness, cek kesehatan mental gratis.",
+      "url": "https://shinsdc.com",
+      "telephone": "+6282242751165",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Raya Kalasan, Kec. Kalasan, Kab. Sleman",
+        "addressLocality": "Sleman",
+        "addressRegion": "D.I. Yogyakarta",
+        "addressCountry": "ID"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Yogyakarta" },
+        { "@type": "City", "name": "Sleman" },
+        { "@type": "City", "name": "Kalasan" }
+      ],
+      "openingHours": [
+        "Mo-Fr 08:00-20:00",
+        "Sa 08:00-16:00",
+        "Su 08:00-14:00"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/shin.sdc"
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Pop-up CTA Cek Kesehatan -->
@@ -570,7 +620,8 @@
                 <a href="#mindfulness">Mindfulness</a>
                 <a href="#skrining">Cek Kesehatan</a>
                 <a href="#kontak">Kontak</a>
-                <a href="#" class="btn-primary"><i class="far fa-calendar-check" style="margin-right: 8px;"></i>Booking</a>
+                <!-- Tombol Booking sekarang mengarah ke #kontak -->
+                <a href="#kontak" class="btn-primary"><i class="far fa-calendar-check" style="margin-right: 8px;"></i>Booking</a>
             </div>
         </div>
     </header>
@@ -889,7 +940,25 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                     <div class="contact-item"><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/shin.sdc" target="_blank" style="color:white; text-decoration:none;">@shin.sdc</a></div>
                     <div class="contact-item"><i class="fas fa-globe"></i> shinsdc.com</div>
                 </div>
-                <div class="jam-praktik"><i class="far fa-clock"></i> Senin–Jumat 08.00–20.00 | Sabtu 08.00–16.00 | Minggu 08.00–14.00</div>
+
+                <!-- Alamat tertulis -->
+                <div class="address-text">
+                    <i class="fas fa-map-marker-alt"></i> Alamat: Jl. Raya Kalasan, Kec. Kalasan, Kab. Sleman, D.I. Yogyakarta
+                </div>
+
+                <!-- Peta Lokasi -->
+                <div style="position: relative; z-index: 1; margin: 30px 0; width: 100%;">
+                    <iframe src="https://maps.google.com/maps?q=SHIN%20Self%20Development%20Center&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi SHIN Self Development Center"></iframe>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="https://maps.app.goo.gl/iU6PJ3KKXKGbcMjH9" target="_blank" class="btn-primary" style="background: white; color: var(--primary) !important; box-shadow: 0 8px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Buka Lokasi di Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="jam-praktik">
+                    <i class="far fa-clock"></i> Senin–Jumat 08.00–20.00 | Sabtu 08.00–16.00 | Minggu 08.00–14.00
+                </div>
                 <br>
                 <a href="https://wa.me/6282242751165" class="btn-primary pulse-animation" target="_blank"><i class="fab fa-whatsapp" style="margin-right: 10px;"></i>Konsultasi via WhatsApp</a>
                 <p style="margin-top: 30px; font-size: 1.1rem;"><em>"You are not alone. You are important."</em></p>
@@ -1043,7 +1112,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         for (const c of cats[s]) { if (scores[s] <= c.max) { cat = c.t; break; } }
                         text += `${names[s]} ${scores[s]} (${cat}), `;
                     }
-                    return text.slice(0, -2); // Buang koma terakhir
+                    return text.slice(0, -2);
                 }
             },
             gad7: {
@@ -1074,12 +1143,21 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
             who5: {
                 title: 'WHO-5 - Indeks Kesejahteraan Mental',
                 instruction: 'Seberapa sering Anda merasakan hal berikut dalam 2 minggu terakhir?',
-                questions: ['Saya merasa ceria dan dalam suasana hati yang baik', 'Saya merasa tenang dan rileks', 'Saya merasa aktif dan bertenaga', 'Saya bangun dengan perasaan segar dan cukup istirahat', 'Kehidupan sehari-hari saya dipenuhi dengan hal-hal yang menarik bagi saya'],
-                likertLabels: ['Tidak Pernah', 'Kadang', 'Kurang dari Separuh', 'Lebih dari Separuh', 'Sering', 'Selalu'], scoring: [0, 1, 2, 3, 4, 5],
-                calculateScore: function(answers) { return answers.reduce((sum, val) => sum + val, 0); },
+                questions: [
+                    'Saya merasa ceria dan dalam suasana hati yang baik',
+                    'Saya merasa tenang dan rileks',
+                    'Saya merasa aktif dan bertenaga',
+                    'Saya bangun dengan perasaan segar dan cukup istirahat',
+                    'Kehidupan sehari-hari saya dipenuhi dengan hal-hal yang menarik bagi saya'
+                ],
+                likertLabels: ['Tidak Pernah', 'Kadang', 'Kurang dari Separuh', 'Lebih dari Separuh', 'Sering', 'Selalu'],
+                scoring: [0, 1, 2, 3, 4, 5],
+                calculateScore: function(answers) {
+                    return answers.reduce((sum, val) => sum + val, 0);
+                },
                 resultCategories: [
-                    { max:28, icon:'<i class="fas fa-frown" style="color:#c0392b;"></i>', title:'Kesejahteraan Rendah', desc:'Skor Anda di bawah ambang batas. Sangat disarankan untuk berkonsultasi dengan profesional.' },
-                    { max:50, icon:'<i class="fas fa-smile" style="color:#0D4B62;"></i>', title:'Kesejahteraan Baik', desc:'Kesejahteraan mental Anda dalam kategori baik. Pertahankan aktivitas positif dan hubungan sosial yang mendukung.' }
+                    { max: 12, icon:'<i class="fas fa-frown" style="color:#c0392b;"></i>', title:'Kesejahteraan Rendah', desc:'Skor Anda di bawah ambang batas. Sangat disarankan untuk berkonsultasi dengan profesional.' },
+                    { max: 25, icon:'<i class="fas fa-smile" style="color:#0D4B62;"></i>', title:'Kesejahteraan Baik', desc:'Kesejahteraan mental Anda dalam kategori baik. Pertahankan aktivitas positif dan hubungan sosial yang mendukung.' }
                 ]
             },
             pss10: {
@@ -1142,13 +1220,13 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
         let currentTest = null;
         let currentQuestion = 0;
         let answers = [];
-        let answerLabels = []; // <-- TAMBAHKAN DI SINI
+        let answerLabels = [];
 
         function startTest(testId) {
             currentTest = quizzes[testId];
             currentQuestion = 0;
             answers = new Array(currentTest.questions.length).fill(undefined);
-            answerLabels = new Array(currentTest.questions.length).fill(''); // Reset label
+            answerLabels = new Array(currentTest.questions.length).fill('');
             document.getElementById('test-selection').style.display = 'none';
             document.getElementById('quiz-area').style.display = 'block';
             document.getElementById('result-area').style.display = 'none';
@@ -1180,7 +1258,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         document.querySelectorAll('#options-container .quiz-option-btn').forEach(b => b.classList.remove('selected'));
                         btn.classList.add('selected');
                         answers[q] = quiz.scoring[idx];
-                        answerLabels[q] = opt; // Simpan label jawaban
+                        answerLabels[q] = opt;
                     };
                     document.getElementById('options-container').appendChild(btn);
                 });
@@ -1199,7 +1277,7 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                         document.querySelectorAll('#likert-container .quiz-likert-btn').forEach(b => b.classList.remove('selected'));
                         btn.classList.add('selected');
                         answers[q] = scores[idx];
-                        answerLabels[q] = label; // Simpan label jawaban
+                        answerLabels[q] = label;
                     };
                     document.getElementById('likert-container').appendChild(btn);
                 });
@@ -1288,10 +1366,8 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 answers: answerLabels.join(', ')
             };
 
-            // URL Web App baru (POST)
             const url = 'https://script.google.com/macros/s/AKfycbwU8iEnSO62a2oY9XiBzNSVgshDyrFNJvlofXn6I0KDkfd0whdnDIpb6ea6O-fORtdw/exec';
 
-            // Gunakan mode no-cors untuk menghindari error CORS
             fetch(url, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -1299,7 +1375,6 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 body: JSON.stringify(payload)
             })
             .then(() => {
-                // Karena no-cors tidak bisa baca response, anggap sukses
                 closeModal();
                 showConfirmation();
             })
