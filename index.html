@@ -199,7 +199,7 @@
             background-size: cover; background-position: center 30%;
             box-shadow: var(--shadow);
             border: 8px solid var(--white);
-            background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('https://raw.githubusercontent.com/Hidehisk/shinsdc/main/Untitled%20%281080%20x%201350%20mm%29%20%283110%20x%201380%20px%29%20%2818%29.png');
             animation: float 6s ease-in-out infinite;
         }
 
@@ -882,9 +882,12 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
                 return;
             }
             error.style.display = 'none';
-            if (pendingTestId) {
+
+            // Simpan ID tes ke variabel lokal sebelum closeConsent()
+            const testId = pendingTestId;
+            if (testId) {
                 closeConsent();
-                startTest(pendingTestId);
+                startTest(testId);
             }
         }
 
