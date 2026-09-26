@@ -9,6 +9,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
     <title>SHIN Self Development Center | Psikolog Jogja & Kalasan</title>
     <meta name="description" content="SHIN Self Development Center (SSDC) menyediakan layanan psikologi, konseling, asesmen, mindfulness, dan cek kesehatan mental gratis. Melayani area Yogyakarta, Sleman, Kalasan. Didukung psikolog berlisensi.">
+    <link rel="canonical" href="https://shinsdc.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SHIN Self Development Center | Psikolog Jogja & Kalasan">
+    <meta property="og:description" content="Layanan psikologi, konseling, asesmen, mindfulness, dan cek kesehatan mental di Yogyakarta, Sleman, dan Kalasan.">
+    <meta property="og:url" content="https://shinsdc.com/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
+    <meta property="og:site_name" content="SHIN Self Development Center">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SHIN Self Development Center | Psikolog Jogja & Kalasan">
+    <meta name="twitter:description" content="Layanan psikologi, konseling, asesmen, mindfulness, dan cek kesehatan mental di Yogyakarta, Sleman, dan Kalasan.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -681,15 +692,19 @@
             .edu-card-img { height: 150px; }
         }
     </style>
-    <!-- Schema Markup LocalBusiness -->
+    <!-- Enhanced LocalBusiness Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://shinsdc.com/#business",
       "name": "SHIN Self Development Center",
-      "description": "Layanan psikologi profesional di Yogyakarta, Sleman, Kalasan, dan sekitarnya. Konseling, asesmen, mindfulness, cek kesehatan mental gratis.",
-      "url": "https://shinsdc.com",
+      "alternateName": "SSDC",
+      "description": "Layanan psikologi profesional di Yogyakarta, Sleman, Kalasan, dan sekitarnya. Konseling, asesmen, mindfulness, dan cek kesehatan mental.",
+      "url": "https://shinsdc.com/",
       "telephone": "+6282242751165",
+      "image": "https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png",
+      "logo": "https://raw.githubusercontent.com/Hidehisk/shinsdc/main/logo%20bulet.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jl. Cangkringan Km 2, Kec. Kalasan, Kab. Sleman",
@@ -699,18 +714,36 @@
       },
       "areaServed": [
         { "@type": "City", "name": "Yogyakarta" },
-        { "@type": "City", "name": "Sleman" },
-        { "@type": "City", "name": "Kalasan" }
+        { "@type": "AdministrativeArea", "name": "Sleman" },
+        { "@type": "Place", "name": "Kalasan" }
       ],
-      "openingHours": [
-        "Mo-Fr 08:00-20:00",
-        "Sa 08:00-16:00",
-        "Su 08:00-14:00"
+      "serviceType": [
+        "Konseling psikologi",
+        "Asesmen psikologis",
+        "Psikoedukasi",
+        "Mindfulness",
+        "Pengembangan diri"
       ],
-           "sameAs": [
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "20:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "14:00" }
+      ],
+      "sameAs": [
         "https://www.instagram.com/shin.sdc",
         "https://www.tiktok.com/@shinsdc"
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://shinsdc.com/#website",
+      "url": "https://shinsdc.com/",
+      "name": "SHIN Self Development Center",
+      "publisher": { "@id": "https://shinsdc.com/#business" },
+      "inLanguage": "id-ID"
     }
     </script>
 </head>
