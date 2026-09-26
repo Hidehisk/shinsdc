@@ -556,6 +556,113 @@
             opacity: 1;
         }
 
+        /* === SSDC EDU Horizontal Scroll === */
+        .edu-scroll-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding: 10px 4px 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #0D4B62 #d9e4e9;
+            position: relative;
+        }
+        .edu-scroll-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        .edu-scroll-wrapper::-webkit-scrollbar-track {
+            background: #e2edf2;
+            border-radius: 10px;
+        }
+        .edu-scroll-wrapper::-webkit-scrollbar-thumb {
+            background: #0D4B62;
+            border-radius: 10px;
+        }
+        .edu-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #073342;
+        }
+
+        .edu-scroll-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            padding: 0 4px;
+        }
+
+        .edu-card {
+            flex: 0 0 320px;
+            max-width: 320px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(13,75,98,0.05);
+            border: 1px solid #d9e4e9;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            scroll-snap-align: start;
+        }
+        .edu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(13,75,98,0.12);
+        }
+
+        .edu-card-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .edu-card-body {
+            padding: 20px;
+        }
+
+        .edu-card-body h3 {
+            margin: 12px 0 8px;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+
+        .edu-card-body p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .edu-tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .edu-nav-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .edu-nav-btn {
+            background: var(--white);
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(13,75,98,0.08);
+        }
+        .edu-nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 12px; }
             .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
@@ -570,6 +677,8 @@
             .cta-box::before { width: 150px; height: 150px; right: -40px; }
             .floating-wa { width: 48px; height: 48px; font-size: 24px; bottom: 16px; right: 16px; }
             .floating-wa .wa-tooltip { display: none; }
+            .edu-card { flex: 0 0 260px; max-width: 260px; }
+            .edu-card-img { height: 150px; }
         }
     </style>
     <!-- Schema Markup LocalBusiness -->
@@ -665,7 +774,6 @@
                 <a href="#skrining">Cek Kesehatan</a>
                 <a href="#lokasi">Lokasi</a>
                 <a href="#kontak">Kontak</a>
-                <!-- Tombol Booking sekarang mengarah ke #kontak -->
                 <a href="#kontak" class="btn-primary"><i class="far fa-calendar-check" style="margin-right: 8px;"></i>Booking</a>
             </div>
         </div>
@@ -918,60 +1026,73 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
     </div>
 </section>
 
-      <!-- SSDC EDU Preview -->
+      <!-- SSDC EDU Preview - Horizontal Scroll -->
 <section id="ssdc-edu" style="background-color: #f9fbfc; padding-top: 20px;">
     <div class="container">
         <h2 class="section-title animate fade-in-up">SSDC EDU</h2>
         <p class="section-subtitle animate fade-in-up">Artikel edukasi seputar kesehatan mental.</p>
-        <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:25px;">
-            <!-- Preview artikel pertama: Pentingnya Skrining Kesehatan Mental -->
-            <div style="background:white; border-radius:24px; box-shadow:0 10px 25px rgba(13,75,98,0.05); border:1px solid #d9e4e9; max-width:350px; overflow:hidden; transition:transform 0.3s; cursor:pointer;" onclick="window.location.href='artikel-ssdc-edu.html'">
-                <div style="height:180px; background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center;"></div>
-                <div style="padding:20px;">
-                    <span style="background:var(--primary-light); color:var(--primary-dark); font-size:0.75rem; padding:4px 12px; border-radius:20px;">Skrining</span>
-                    <h3 style="margin:12px 0 8px; color:var(--primary-dark); font-size:1.2rem;">Pentingnya Skrining Kesehatan Mental</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Skrining kesehatan mental adalah langkah kecil hari ini yang membawa perubahan besar untuk kesejahteraan jiwa Anda di masa depan.</p>
-                    <a href="artikel-ssdc-edu.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
-                </div>
-            </div>
 
-            <!-- Preview artikel kedua: Literasi Kesehatan Mental -->
-            <div style="background:white; border-radius:24px; box-shadow:0 10px 25px rgba(13,75,98,0.05); border:1px solid #d9e4e9; max-width:350px; overflow:hidden; transition:transform 0.3s; cursor:pointer;" onclick="window.location.href='artikel-literasi-kesehatan-mental.html'">
-                <div style="height:180px; background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center;"></div>
-                <div style="padding:20px;">
-                    <span style="background:var(--primary-light); color:var(--primary-dark); font-size:0.75rem; padding:4px 12px; border-radius:20px;">Literasi</span>
-                    <h3 style="margin:12px 0 8px; color:var(--primary-dark); font-size:1.2rem;">Literasi Kesehatan Mental</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Memahami diri, menjaga pikiran, membangun hidup yang lebih bermakna.</p>
-                    <a href="artikel-literasi-kesehatan-mental.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
-                </div>
-            </div>
-            <!-- Preview artikel ketiga: Yoga untuk Kesehatan Mental -->
-<div style="background:white; border-radius:24px; box-shadow:0 10px 25px rgba(13,75,98,0.05); border:1px solid #d9e4e9; max-width:350px; overflow:hidden; transition:transform 0.3s; cursor:pointer;" onclick="window.location.href='artikel-yoga-kesehatan-mental.html'">
-    <div style="height:180px; background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center;"></div>
-    <div style="padding:20px;">
-        <span style="background:var(--primary-light); color:var(--primary-dark); font-size:0.75rem; padding:4px 12px; border-radius:20px;">Yoga</span>
-        <h3 style="margin:12px 0 8px; color:var(--primary-dark); font-size:1.2rem;">Yoga untuk Kesehatan Mental</h3>
-        <p style="color:var(--text-light); font-size:0.9rem;">Bagaimana yoga dapat mendukung kesejahteraan mental dan menjadi bagian dari self-care.</p>
-        <a href="artikel-yoga-kesehatan-mental.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
-    </div>
-</div>
-
-    <!-- Preview Artikel: Menghayati Proses -->
-<div style="background:white; border-radius:24px; box-shadow:0 10px 25px rgba(13,75,98,0.05); border:1px solid #d9e4e9; max-width:350px; overflow:hidden; transition:transform 0.3s; cursor:pointer;" onclick="window.location.href='artikel-menghayati-proses.html'">
-    <div style="height:180px; background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center;"></div>
-    <div style="padding:20px;">
-        <span style="background:var(--primary-light); color:var(--primary-dark); font-size:0.75rem; padding:4px 12px; border-radius:20px;">Refleksi</span>
-        <h3 style="margin:12px 0 8px; color:var(--primary-dark); font-size:1.2rem;">Menghayati Proses</h3>
-        <p style="color:var(--text-light); font-size:0.9rem;">Catatan reflektif seorang psikolog tentang integrasi, batasan profesional, dan pertumbuhan layanan mandiri.</p>
-        <a href="artikel-menghayati-proses.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
-    </div>
-</div>
+        <!-- Tombol navigasi scroll (opsional) -->
+        <div class="edu-nav-buttons">
+            <button class="edu-nav-btn" aria-label="Geser ke kiri" onclick="scrollEdu(-1)">&#10094;</button>
+            <button class="edu-nav-btn" aria-label="Geser ke kanan" onclick="scrollEdu(1)">&#10095;</button>
         </div>
+
+        <!-- Wrapper scroll horizontal -->
+        <div class="edu-scroll-wrapper">
+            <div class="edu-scroll-track">
+
+                <!-- Artikel 1 -->
+                <div class="edu-card" onclick="window.location.href='artikel-ssdc-edu.html'">
+                    <div class="edu-card-img" style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="edu-card-body">
+                        <span class="edu-tag">Skrining</span>
+                        <h3>Pentingnya Skrining Kesehatan Mental</h3>
+                        <p>Skrining kesehatan mental adalah langkah kecil hari ini yang membawa perubahan besar untuk kesejahteraan jiwa Anda di masa depan.</p>
+                        <a href="artikel-ssdc-edu.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
+                    </div>
+                </div>
+
+                <!-- Artikel 2 -->
+                <div class="edu-card" onclick="window.location.href='artikel-literasi-kesehatan-mental.html'">
+                    <div class="edu-card-img" style="background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="edu-card-body">
+                        <span class="edu-tag">Literasi</span>
+                        <h3>Literasi Kesehatan Mental</h3>
+                        <p>Memahami diri, menjaga pikiran, membangun hidup yang lebih bermakna.</p>
+                        <a href="artikel-literasi-kesehatan-mental.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
+                    </div>
+                </div>
+
+                <!-- Artikel 3 -->
+                <div class="edu-card" onclick="window.location.href='artikel-yoga-kesehatan-mental.html'">
+                    <div class="edu-card-img" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="edu-card-body">
+                        <span class="edu-tag">Yoga</span>
+                        <h3>Yoga untuk Kesehatan Mental</h3>
+                        <p>Bagaimana yoga dapat mendukung kesejahteraan mental dan menjadi bagian dari self-care.</p>
+                        <a href="artikel-yoga-kesehatan-mental.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
+                    </div>
+                </div>
+
+                <!-- Artikel 4 -->
+                <div class="edu-card" onclick="window.location.href='artikel-menghayati-proses.html'">
+                    <div class="edu-card-img" style="background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="edu-card-body">
+                        <span class="edu-tag">Refleksi</span>
+                        <h3>Menghayati Proses</h3>
+                        <p>Catatan reflektif seorang psikolog tentang integrasi, batasan profesional, dan pertumbuhan layanan mandiri.</p>
+                        <a href="artikel-menghayati-proses.html" class="btn-outline" style="margin-top:15px;">Baca Selengkapnya</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div style="text-align:center; margin-top:25px;">
             <a href="ssdc-edu.html" class="btn-primary">Lihat Semua Artikel</a>
         </div>
     </div>
-    
 </section>
 
         <!-- Cek Kesehatan Mental -->
@@ -1218,6 +1339,15 @@ Dalam menjalankan profesi sebagai Psikolog Umum dengan kewenangan promotive, pre
         }
 
         setInterval(() => { changeSlide(1); }, 5000);
+
+        // Scroll SSDC EDU (tombol panah)
+        function scrollEdu(direction) {
+            const wrapper = document.querySelector('.edu-scroll-wrapper');
+            if (!wrapper) return;
+            const card = wrapper.querySelector('.edu-card');
+            const cardWidth = card ? card.offsetWidth + 20 : 340; // 20 = gap
+            wrapper.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        }
 
         // Database kuis
         const quizzes = {
